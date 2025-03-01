@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $remark = $_POST['remark'];
 
     // Recipient email address
-    $to = "anishpariyar1122@gmail.com";
+    $to = "sijanshahi783@gmail.com";
 
     // Subject of the email
     $subject = "New Payment Submission";
