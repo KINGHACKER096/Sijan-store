@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1x Bet List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0d0221, #1d033b, #2a0845);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px;
+            background-color: #0d0221;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .menu-bar {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-bar div {
+            width: 45px;
+            height: 4px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-bar:hover div {
+            background-color: #4CAF50;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            background-color: #2a1b4b;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #4CAF50;
+        }
+
+        h1 {
+            margin-top: 100px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #id {
+            width: 300px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            outline: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #id::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+        }
+
+        #id:focus {
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .box {
+            padding: 15px;
+            background-color: #2a1b4b;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .next-button {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4CAF50, #81C784);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .next-button:hover {
+            transform: scale(1.1);
+        }
+
+        #price {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="menu-bar" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact-info.html">Contact</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Enter your ID</h1>
+
+        <input type="text" id="id" placeholder="Enter your 1x Bet ID" />
+
+        <div class="container">
+            <div class="box" onclick="selectPackage('100re - 105rs')">100re</div>
+            <div class="box" onclick="selectPackage('200re - 205rs')">200re</div>
+            <div class="box" onclick="selectPackage('300re - 305rs')">300re</div>
+            <div class="box" onclick="selectPackage('400re - 405rs')">400re</div>
+            <div class="box" onclick="selectPackage('500re - 505rs')">500re</div>
+            <div class="box" onclick="selectPackage('600re - 605rs')">600re</div>
+            <div class="box" onclick="selectPackage('700re - 705rs')">700re</div>
+            <div class="box" onclick="selectPackage('800re - 805rs')">800re</div>
+            <div class="box" onclick="selectPackage('900re - 905rs')">900re</div>
+            <div class="box" onclick="selectPackage('1000re - 1005rs')">1000re</div>
+            <div class="box" onclick="selectPackage('2000re - 2005rs')">2000re</div>
+            <div class="box" onclick="selectPackage('3000re - 3005rs')">3000re</div>
+            <div class="box" onclick="selectPackage('4000re - 4005rs')">4000re</div>
+            <div class="box" onclick="selectPackage('5000re - 5005rs')">5000re</div>
+            <div class="box" onclick="selectPackage('6000re - 6005rs')">6000re</div>
+            <div class="box" onclick="selectPackage('7000re - 7005rs')">7000re</div>
+            <div class="box" onclick="selectPackage('8000re - 8005rs')">8000re</div>
+            <div class="box" onclick="selectPackage('9000re - 9005rs')">9000re</div>
+            <div class="box" onclick="selectPackage('10000re - 10005rs')">10000re</div>
+        </div>
+
+        <div id="price">Click on a package to see the price</div>
+
+        <a href="#" class="next-button" onclick="goToPage2()">Next</a>
+    </div>
+
+    <script>
+        let selectedPackage = '';
+
+        function selectPackage(packageName) {
+            selectedPackage = packageName;
+            document.getElementById('price').textContent = packageName;
+        }
+
+        function goToPage2() {
+            const id = document.getElementById('id').value;
+            if (!id || !selectedPackage) {
+                alert("Please enter your ID and select a package.");
+                return;
+            }
+            localStorage.setItem('uid', id);  // Store the UID in localStorage
+            localStorage.setItem('package', selectedPackage);  // Store selected package in localStorage
+            window.location.href = '1x-payment.html';
+        }
+
+        function toggleMenu() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        window.onclick = function(event) {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (!event.target.closest('.menu-bar')) {
+                dropdownMenu.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

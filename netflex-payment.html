@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0d0221, #1d033b, #2a0845);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px;
+            background-color: #0d0221;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .menu-bar {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-bar div {
+            width: 45px;
+            height: 4px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-bar:hover div {
+            background-color: #4CAF50;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            background-color: #2a1b4b;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #4CAF50;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #1d033b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        .container h1 {
+            font-size: 1.5rem;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .qr-section img {
+            margin: 10px 0;
+            width: 175px;
+            height: 220px;
+            border-radius: 10px;
+        }
+
+        .qr-section p {
+            font-size: 0.9rem;
+        }
+
+        textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #2a1b4b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4CAF50, #81C784);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #screenshot-label {
+            display: block;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #2a1b4b;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        #screenshot-label img {
+            width: 25%;
+            border-radius: 5px;
+        }
+
+        #screenshot-label:hover {
+            background-color: #4CAF50;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Success Popup Styles */
+        .success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            z-index: 1500;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .success-popup.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo" class="logo">
+    <div class="menu-bar" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact-info.html">Contact</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Provide Screenshot and Remarks</h1>
+
+    <div class="qr-section">
+        <img src="eSewa_My_QR_9806167776_1722674581543.jpg" alt="QR Code">
+        <p>Scan QR code to make payment</p>
+    </div>
+
+    <textarea id="remarks" placeholder="Enter remarks"></textarea>
+
+    <label for="screenshot" id="screenshot-label">
+        <img src="default-screenshot.png" alt="Default Screenshot">
+        <p>Click to select screenshot</p>
+    </label>
+    <input type="file" id="screenshot" accept="image/*" onchange="updateScreenshotPreview(this)">
+
+    <button class="submit-btn" onclick="sendToTelegram()">Confirm</button>
+</div>
+
+<!-- Success Popup -->
+<div class="success-popup" id="successPopup">
+    Your order has been sent!
+</div>
+
+<script>
+    function toggleMenu() {
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    window.onclick = function(event) {
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        if (!event.target.closest('.menu-bar')) {
+            dropdownMenu.style.display = 'none';
+        }
+    }
+
+    async function sendToTelegram() {
+        const botToken = "7638184144:AAExu3J_y7J2kixfdK3_O0kbMLwIvTNloJg";
+        const chatId = "6339129165";
+        const remarks = document.getElementById('remarks').value;
+        const screenshot = document.getElementById('screenshot').files[0];
+        const uid = localStorage.getItem('uid');  // Retrieve UID from localStorage
+        const selectedPackage = localStorage.getItem('package');  // Retrieve package from localStorage
+
+        if (!remarks || !screenshot) {
+            alert("Please provide remarks and upload a screenshot.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('caption', `UID: ${uid}\nPackage: ${selectedPackage}\nRemarks: ${remarks}`);
+        formData.append('photo', screenshot);
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                showSuccessPopup();
+                localStorage.clear();
+            } else {
+                alert('Failed to send data to Telegram. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error sending data to Telegram:', error);
+            alert('An error occurred. Please try again.');
+        }
+    }
+
+    function showSuccessPopup() {
+        const popup = document.getElementById('successPopup');
+        popup.classList.add('show');
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 2000);  // Popup will disappear after 2 seconds
+    }
+
+    function updateScreenshotPreview(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const screenshotLabel = document.getElementById('screenshot-label');
+                screenshotLabel.innerHTML = `<img src="${e.target.result}" alt="Screenshot">`;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #15102a;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #0d0221;
+            z-index: 10;
+            position: relative;
+        }
+
+        .logo {
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .menu-bar {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-bar div {
+            width: 35px;
+            height: 4px;
+            background-color: white;
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-bar:hover div {
+            background-color: #4CAF50;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            background-color: #2a1b4b;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 20;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #4CAF50;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #1f1835;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #b30000;
+            color: white;
+            font-size: 12px;
+            padding: 3px 7px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="menu-bar" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact-info.html">Contact</a>
+        </div>
+    </header>
+
+    <div class="product-list" id="product-list">
+        <div class="product topup" onclick="location.href='ff-topup-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="image.png" alt="free fire">
+            <h3>TOPUP BD</h3>
+        </div>
+        <div class="product topup" onclick="location.href='1x-depo-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="1xbet_com.png" alt="1x bet">
+            <h3>1X DEPO</h3>
+        </div>
+        <div class="product topup" onclick="location.href='pubg-topup-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="pubg.png" alt="pubg">
+            <h3>PUBG UC</h3>
+        </div>
+        <div class="product topup" onclick="location.href='telegram-topup-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="telegram.jpg" alt="telegram premium">
+            <h3>TELEGRAM PREMIUM</h3>
+        </div>
+        <div class="product topup" onclick="location.href='netflex-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="Netflix.png" alt="netflix premium">
+            <h3>NETFLIX PREMIUM</h3>
+        </div>
+        <div class="product topup" onclick="location.href='roblox-topup-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="rb.jpeg" alt="robux">
+            <h3>ROBUX</h3>
+        </div>
+        <div class="product topup" onclick="location.href='farlighr-topup-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="farlight.jpeg" alt="farlight diamond">
+            <h3>FARLIGHT DIAMOND</h3>
+        </div>
+        <div class="product topup" onclick="location.href='coc-topup-list.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="coc.jpeg" alt="coc gems">
+            <h3>COC GEMS</h3>
+        </div>
+        <div class="product topup" onclick="location.href='free-fire-evo-access.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="free-fire-evo-access.webp" alt="new product 1">
+            <h3>EVO ACCESS</h3>
+        </div>
+        <div class="product topup" onclick="location.href='free-fire-airdrop.html'">
+            <span class="featured-badge">SERVICE</span>
+            <img src="free-fire-airdrop.jpeg" alt="new product 2">
+            <h3>AIRDROP</h3>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        window.onclick = function(event) {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (!event.target.closest('.menu-bar')) {
+                dropdownMenu.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

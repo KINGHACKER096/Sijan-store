@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0d0221, #1d033b, #2a0845);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px;
+            background-color: #0d0221;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .menu-bar {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-bar div {
+            width: 35px;
+            height: 4px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-bar:hover div {
+            background-color: #4CAF50;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            background-color: #2a1b4b;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #4CAF50;
+        }
+
+        main {
+            padding: 100px 20px 20px 20px; /* Ensure space for the fixed header */
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .contact-info img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" class="logo"> <!-- Add your logo URL here -->
+        <div class="menu-bar" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact-info.html">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <h1>About Us</h1>
+        <p>Welcome to anish_axe.github, your trusted source for seamless and secure top-up services. With over two years of experience in the industry, we have served countless satisfied customers.</p>
+        <p><strong>Experience & Trust:</strong> We bring a wealth of experience and trust to every transaction, ensuring our customers get the best services available.</p>
+        <p><strong>Commitment to Excellence:</strong> Our goal is to deliver seamless, secure, and efficient top-up experiences each time.</p>
+        <p><strong>Speed & Reliability:</strong> We offer instant and accurate transactions using state-of-the-art technology to ensure you get what you need quickly and reliably.</p>
+        <p><strong>Wide Range of Services:</strong> We provide mobile top-ups, data purchases, bill payments, and more, making us your one-stop shop for all your digital needs.</p>
+        <p><strong>Customer-Centric Approach:</strong> We prioritize the security and satisfaction of our customers in every service we offer.</p>
+        <p><strong>Exceptional Support:</strong> Our dedicated support team is always ready to provide you with professional and caring service, ensuring your concerns are addressed swiftly and effectively.</p>
+        <p><strong>Trusted by Many:</strong> Join a growing community that trusts us for our proven services and exceptional customer care.</p>
+    </main>
+
+    <div class="contact-info">
+        <div class="contact-item">
+            <img src="whatsapp-photo.png" alt="WhatsApp"> <!-- Add your WhatsApp icon URL -->
+            <span>WhatsApp: 9806167776</span>
+        </div>
+        <div class="contact-item">
+            <img src="gmail-photo.png" alt="Gmail"> <!-- Add your Gmail icon URL -->
+            <span>Email: anishpariyar1122@gmail.com</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        window.onclick = function(event) {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (!event.target.closest('.menu-bar')) {
+                dropdownMenu.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
